@@ -1,0 +1,93 @@
+<mat-accordion class="example-headers-align" >
+  <mat-list>
+    <mat-list-item> Font-Family : {{fontSettings.font_family}} </mat-list-item>
+    <mat-list-item> Size : {{fontSettings.size}} </mat-list-item>
+    <mat-list-item> Font Spacing : {{fontSettings.font_spacing}} </mat-list-item>
+    <mat-list-item> Font Styling : {{fontSettings.font_style}} </mat-list-item>
+  </mat-list>
+
+
+
+
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Font
+      </mat-panel-title>
+      <mat-panel-description>
+        Family and size
+        <mat-icon>text_format</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-select placeholder="{{fontSettings.font_family}}" [(ngModel)]="fontSettings.font_family">
+        <mat-option *ngFor="let font of fonts" value="{{font.family}}">
+          {{font.family}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" min="1" placeholder="Size (pt)" [(ngModel)]="fontSettings.size">
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Font styling
+      </mat-panel-title>
+      <mat-panel-description>
+        Styles and spacing
+        <mat-icon>create</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field style="width:80%">
+        <mat-select placeholder="{{fontSettings.font_style}}" [(ngModel)]="fontSettings.font_style" >
+            <mat-option *ngFor="let variant of fonts[0].variants" value="{{variant}}">
+              {{variant}}
+            </mat-option>
+          </mat-select>
+      
+    </mat-form-field>
+
+    
+    <br>
+      <mat-slider [(ngModel)]="fontSettings.font_spacing" tickInterval="auto" style="width:80%; margin: 0">Character spacing</mat-slider>
+
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Color
+      </mat-panel-title>
+      <mat-panel-description>
+        Select colors
+        <mat-icon>date_range</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">End</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
