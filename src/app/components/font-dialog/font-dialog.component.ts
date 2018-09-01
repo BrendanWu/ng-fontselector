@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '../../../../node_modules/@angular/material';
 import { Http } from '../../../../node_modules/@angular/http';
 import { map } from "rxjs/operators";
@@ -10,6 +10,9 @@ import { FontSettings } from "../../models/font-settings";
   templateUrl: './font-dialog.component.html',
   styleUrls: ['./font-dialog.component.css']
 })
+
+
+
 export class FontDialogComponent implements OnInit {
 
   fonts: any[];

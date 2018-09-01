@@ -8,7 +8,8 @@ import { MatButtonModule, MatCheckboxModule, MatExpansionModule, MatSelectModule
 import { FontDialogComponent } from './components/font-dialog/font-dialog.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
-
+import { ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
     HttpModule,
     FormsModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
   bootstrap: [AppComponent],
